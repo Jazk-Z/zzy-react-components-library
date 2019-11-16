@@ -1,0 +1,100 @@
+{
+  "name": "react-componets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "packages/components/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "setup": "yarn && yarn clean && yarn bootstrap",
+    "lint": "eslint /Users/zhangfan/project/react-componets/packages/components/button/lib/button.tsx",
+    "lint:style": "lerna run lint:style --parallel",
+    "fix": "lerna run lint --fix",
+    "fix:style": "lerna run fix:style --fix",
+    "build": "lerna run build --parallel",
+    "changelog": "lerna run version && conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "jest:dom": "jest --config jest.dom.config.js --no-cache"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-angular": "^8.2.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.8",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "babel-eslint": "^10.0.3",
+    "commitizen": "^4.0.3",
+    "conventional-changelog-cli": "^2.0.27",
+    "cz-conventional-changelog": "3.0.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-alloy": "^3.1.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lerna": "^3.16.4",
+    "lint-staged": "^10.0.0-1",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended-scss": "^4.0.0",
+    "stylelint-prettier": "^1.1.1",
+    "stylelint-scss": "^3.12.1",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint . --fix",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint . --fix",
+      "git add"
+    ]
+  },
+  "changelog": {
+    "labels": {
+      "feat": ":rocket: New Feature",
+      "bug": ":bug: Bug Fix",
+      "doc": ":memo: Documentation",
+      "internal": ":house: Internal",
+      "breaking": ":boom: Breaking Change"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

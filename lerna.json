@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "packages/*",
+    "packages/components/*"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "changelogPreset": "angular",
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    }
+  }
+}
