@@ -44,7 +44,8 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-uses-vars': 'error',
     'react/jsx-uses-react': 'error',
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
   overrides: [
     {
