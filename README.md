@@ -22,3 +22,23 @@
 ```
 Type string trivially inferred from a string literal, remove type annotation (no-inferrable-types)
 ```
+
+- [ x ] 处理样式
+```
+ESNext
+
+babel 7 & @babel/typescript
+"build": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\""
+
+"check:ts": "tsc --noEmit --pretty",
+    "check:ts:watch": "npm run check:ts -- --watch"
+
+    1）Namespace
+解决方案：不要用！它们已经是过时的了。改用标准的 ES6 module（import/export），在推荐的 tslint 规则中也建议不要使用 namesapce。
+2）使用 <newtype>x 语法转换类型
+解决方案：改用 x as newtype 。
+3）const 枚举
+这个锅没得甩，目前只能用常规的枚举，期待未来能够支持。
+4）历史遗留风格的 import/export 语法
+比如：import foo = require(...) 和 export = foo。
+```

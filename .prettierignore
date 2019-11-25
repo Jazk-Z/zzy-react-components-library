@@ -1,3 +1,6 @@
 node_modules
 .vscode
 .idea
+LICENSE
+lerna-debug.log
+yarn-error.log
