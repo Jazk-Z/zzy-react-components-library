@@ -1,0 +1,40 @@
+{
+  "name": "@zhongyao/cli-gulp",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "Jazk-Z <zzyamor@gmail.com>",
+  "homepage": "https://github.com/Jazk-Z/zzy-react-components-library#readme",
+  "license": "ISC",
+  "main": "lib/cli-gulp.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jazk-Z/zzy-react-components-library.git"
+  },
+  "scripts": {
+    "link": "npm link"
+  },
+  "bugs": {
+    "url": "https://github.com/Jazk-Z/zzy-react-components-library/issues"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^4.0.1",
+    "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "merge2": "^1.3.0",
+    "minimist": "^1.2.0",
+    "rimraf": "^3.0.0",
+    "through2": "^3.0.1"
+  },
+  "bin": {
+    "gulp:build": "./index.js"
+  }
+}

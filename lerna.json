@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "packages/*",
-    "packages/components/*"
-  ],
+  "packages": ["packages/*", "packages/components/*", "packages/@zhongyao/*"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,

@@ -6,7 +6,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "packages/components/*"
+    "packages/components/*",
+    "packages/@zhongyao/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -24,7 +25,9 @@
     "build:umd": "cross-env BABEL_ENV='production-umd' webpack --progress --config ./script/webpack/webpack.prod.config.js",
     "build:dev": "cross-env BABEL_ENV='production-umd' webpack --progress --config ./script/webpack/webpack.dev.config.js",
     "a": "stylelint --ext .jsx,.js,.tsx,.ts packages/ --fix",
-    "b": "stylelint packages/* --fix"
+    "b": "stylelint packages/* --fix",
+    "c": "lerna create cli-gulp packages/@zhongyao",
+    "link": "lerna run link"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -111,10 +114,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint . --fix",
-      "git add"
-    ],
     "*.scss": [
       "stylelint . --fix",
       "git add"
