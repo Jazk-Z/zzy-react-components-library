@@ -1,21 +1,38 @@
 #!/usr/bin/env node
 const program = require('commander')
 const colors = require('colors')
+const gulp = require('gulp')
+const execa = require('execa')
+const path = require('path')
 const package = require('./package.json')
-const matchDirname = (name) => {
-  if (['esm', 'cjs'].includes(name)) {
-    return name
-  } else {
-    program.outputHelp(() => colors.red('relative root a output dir name, but only esm|cjs'))
-  }
-}
+
+const findGulpFile = __dirname
+const gulpTask = require('./gulpfile')
+
 program
   .version(package.version)
-  .option(
-    '-o, --output <output>',
-    'relative root a output dir name, but only esm|cjs',
-    matchDirname
+  .command('run <mode>')
+  .description('build components mode cjs|esm|all')
+  .action(async function(mode) {
+    if (['cjs', 'esm', 'all'].includes(mode)) {
+      try {
+        gulpTask[mode].apply(gulp, [process.cwd(), false, path.join(process.cwd(), mode)])
+        // execa.sync('gulp', [mode, '--cwd', `${__dirname}`]).stdout.pipe(process.stdout)
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      program.outputHelp((txt) => colors.red(txt))
+    }
+  })
+// program.command('*').action(function(env) {
+//   program.outputHelp((txt) => colors.red(txt))
+// })
+program.on('command:*', function() {
+  console.error(
+    'Invalid command: %s\nSee --help for a list of available commands.',
+    program.args.join(' ')
   )
-  .option('-m, --use-module <module>', 'babel use module to complie')
-  .parse(process.argv)
-const { output, useModule } = program
+  process.exit(1)
+})
+program.parse(process.argv)

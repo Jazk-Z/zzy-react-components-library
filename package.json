@@ -24,7 +24,7 @@
     "build-storybook": "build-storybook",
     "build:umd": "cross-env BABEL_ENV='production-umd' webpack --progress --config ./script/webpack/webpack.prod.config.js",
     "build:dev": "cross-env BABEL_ENV='production-umd' webpack --progress --config ./script/webpack/webpack.dev.config.js",
-    "a": "stylelint --ext .jsx,.js,.tsx,.ts packages/ --fix",
+    "a": "eslint --ext .jsx,.js,.tsx,.ts packages/ --fix",
     "b": "stylelint packages/* --fix",
     "c": "lerna create cli-gulp packages/@zhongyao",
     "link": "lerna run link"
@@ -81,6 +81,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "glob": "^7.1.6",
     "globby": "^10.0.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
@@ -114,6 +116,10 @@
     }
   },
   "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint . --fix",
+      "git add"
+    ],
     "*.scss": [
       "stylelint . --fix",
       "git add"

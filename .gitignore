@@ -3,3 +3,4 @@ node_modules
 .idea
 lerna-debug.log
 yarn-error.log
+packages/@zhongyao/.DS_Store

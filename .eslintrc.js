@@ -85,6 +85,13 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-var-requires': 'off'
       }
+    },
+    {
+      files: ['gulpfile.js'],
+      rules: {
+        'global-require': 'off',
+        'import/no-dynamic-require': 'off'
+      }
     }
   ]
 }
