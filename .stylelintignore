@@ -3,3 +3,5 @@ LICENSE
 lerna-debug.log
 yarn-error.log
 *.json
+cjs/*
+es/*

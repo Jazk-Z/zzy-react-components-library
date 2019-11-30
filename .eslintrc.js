@@ -87,10 +87,11 @@ module.exports = {
       }
     },
     {
-      files: ['gulpfile.js'],
+      files: ['**/packages/@zhongyao/**/*.js'],
       rules: {
         'global-require': 'off',
-        'import/no-dynamic-require': 'off'
+        'import/no-dynamic-require': 'off',
+        'no-param-reassign': 'off'
       }
     }
   ]
