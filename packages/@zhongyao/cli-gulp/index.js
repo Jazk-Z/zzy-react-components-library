@@ -2,24 +2,22 @@
 const program = require('commander')
 const colors = require('colors')
 const gulp = require('gulp')
-const execa = require('execa')
-const path = require('path')
+const log = require('fancy-log')
 const package = require('./package.json')
 
-const findGulpFile = __dirname
-const gulpTask = require('./gulpfile')
+const gulpTask = require('./gulpfile/index')
 
 program
   .version(package.version)
   .command('run <mode>')
-  .description('build components mode cjs|esm|all')
-  .action(async function(mode) {
+  .description('build components mode cjs|es|all')
+  .action((mode) => {
     if (['cjs', 'esm', 'all'].includes(mode)) {
       try {
-        gulpTask[mode].apply(gulp, [process.cwd(), false, path.join(process.cwd(), mode)])
+        gulpTask[mode].apply(gulp, [mode])
         // execa.sync('gulp', [mode, '--cwd', `${__dirname}`]).stdout.pipe(process.stdout)
       } catch (e) {
-        console.log(e)
+        log.error(e)
       }
     } else {
       program.outputHelp((txt) => colors.red(txt))
@@ -28,8 +26,8 @@ program
 // program.command('*').action(function(env) {
 //   program.outputHelp((txt) => colors.red(txt))
 // })
-program.on('command:*', function() {
-  console.error(
+program.on('command:*', () => {
+  log.error(
     'Invalid command: %s\nSee --help for a list of available commands.',
     program.args.join(' ')
   )

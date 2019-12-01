@@ -4,3 +4,5 @@ node_modules
 lerna-debug.log
 yarn-error.log
 packages/@zhongyao/.DS_Store
+cjs
+es

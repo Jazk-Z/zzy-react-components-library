@@ -1,2 +1,2 @@
 import '../../style/index.scss'
-import './button.scss'
+import './index.scss'

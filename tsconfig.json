@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "lib": ["es6", "dom"],
     "jsx": "react",
@@ -13,5 +13,5 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/__tests__/*.{ts,tsx,js,jsx}", "**/stories/*.{js,jsx,ts,tsx}"]
 }
