@@ -6,7 +6,7 @@ const path = require('path')
 const fs = require('fs')
 const merge2 = require('merge2')
 const babelTransform = require('./babel-complie-js')
-const sassTransform = require('./sass-complie-css')
+const sassTransform = require('./compile-sass')
 // const tsDefaultReporter = ts.reporter.defaultReporter()
 const baseTsConfigPath = path.join(process.cwd(), 'tsconfig.json')
 const baseConfigPath = path.join(process.cwd(), 'zhongyao.config.js')
@@ -44,7 +44,10 @@ if (fs.existsSync(baseTsConfigPath)) {
 const compileTs = (useModule) => {
   const output = path.join(context, useModule)
   rimraf.sync(output)
-  const tsProject = ts.createProject(path.join(context, 'tsconfig.json'), { ...tsConfig })
+  const tsProject = ts.createProject(path.join(context, 'tsconfig.json'), {
+    ...tsConfig,
+    module: 'es2015'
+  })
   const tscResult = gulp
     .src([
       'packages/components/**/!(__tests__|stories)/*.{tsx, ts}',
